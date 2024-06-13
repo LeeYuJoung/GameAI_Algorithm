@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GameAI_Algorithm\\\uAC8C\uC784 AI\uB97C \uC704\uD55C \uD0D0\uC0C9 \uC54C\uACE0\uB9AC\uC998 \uC785\uBB38\\Chapter04\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F162292-F865-48BA-9D56-EFCF3CA9029D}|Chapter04\\Chapter04.vcxproj|D:\\GameAI_Algorithm\\\uAC8C\uC784 AI\uB97C \uC704\uD55C \uD0D0\uC0C9 \uC54C\uACE0\uB9AC\uC998 \uC785\uBB38\\Chapter04\\Chapter04\\00_AutoMoveMazeState.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5F162292-F865-48BA-9D56-EFCF3CA9029D}|Chapter04\\Chapter04.vcxproj|solutionrelative:Chapter04\\00_AutoMoveMazeState.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "00_AutoMoveMazeState.cpp",
+              "DocumentMoniker": "D:\\GameAI_Algorithm\\\uAC8C\uC784 AI\uB97C \uC704\uD55C \uD0D0\uC0C9 \uC54C\uACE0\uB9AC\uC998 \uC785\uBB38\\Chapter04\\Chapter04\\00_AutoMoveMazeState.cpp",
+              "RelativeDocumentMoniker": "Chapter04\\00_AutoMoveMazeState.cpp",
+              "ToolTip": "D:\\GameAI_Algorithm\\\uAC8C\uC784 AI\uB97C \uC704\uD55C \uD0D0\uC0C9 \uC54C\uACE0\uB9AC\uC998 \uC785\uBB38\\Chapter04\\Chapter04\\00_AutoMoveMazeState.cpp",
+              "RelativeToolTip": "Chapter04\\00_AutoMoveMazeState.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-13T01:53:29.642Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
