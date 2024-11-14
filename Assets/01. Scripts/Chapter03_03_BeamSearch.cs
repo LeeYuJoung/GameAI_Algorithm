@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Chapter03.03 빔탐색
-// 빔 너비와 깊이를 지정해서 빔 탐색으로 행동을 결정
+// 탐색할 빔 너비와 깊이를 지정해서 탐색을 진행 후 행동을 결정
 public class Chapter03_03_BeamSearch : MonoBehaviour
 {
     // 좌표 저장 구조체
