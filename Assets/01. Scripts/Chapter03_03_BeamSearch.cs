@@ -20,6 +20,7 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     // 오른쪽, 왼쪽, 아래쪽, 위쪽으로 이동하는 이동방향 x와 y축 값
     public int[] dx = new int[4] { 1, -1, 0, 0 };
     public int[] dy = new int[4] { 0, 0, 1, -1 };
+    public int firstAction = -1; // 탐색 트리의 루트 노드에서 첫 번째 선택한 행동 
 
     public const int H = 3;        // 미로의 높이 (y축)
     public const int W = 4;        // 미로의 너비 (x축)
@@ -110,12 +111,35 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     #endregion
 
     #region BeamSearch
+    // 빔 너비와 깊이를 지정해서 빔탐색으로 행동을 결정
     public int BeamSearch_AI()
     {
-        int beamWidth = 0;
-        int beamDepth = 0;
+        Queue currentBeam = new Queue();
+        int beamWidth = 2;
+        int beamDepth = 4;
 
-        return 0;
+        int bestScore = 0;
+        int bestAction = 0;
+
+        for(int i = 0; i < beamDepth; i++)
+        {
+            Queue nextBeam = new Queue();
+
+            for(int j = 0; j < beamWidth; j++)
+            {
+                if(currentBeam.Count == 0)
+                {
+                    break;
+                }
+            }
+
+            if (IsDone())
+            {
+                break;
+            }
+        }
+
+        return firstAction;
     }
     #endregion
 
