@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // Chapter03.03 빔탐색
@@ -20,6 +21,8 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     // 오른쪽, 왼쪽, 아래쪽, 위쪽으로 이동하는 이동방향 x와 y축 값
     public int[] dx = new int[4] { 1, -1, 0, 0 };
     public int[] dy = new int[4] { 0, 0, 1, -1 };
+
+    public int[] actions = new int[4];
     public int firstAction = -1; // 탐색 트리의 루트 노드에서 첫 번째 선택한 행동 
 
     public const int H = 3;        // 미로의 높이 (y축)
@@ -33,6 +36,7 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     void Start()
     {
         CreateMaze(10);
+        actions = BeamSearch_AI(2, 4);
     }
 
     // h * w 크기의 미로를 생성
@@ -64,7 +68,7 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     {
         if (!IsDone())
         {
-            Advance(BeamSearch_AI());
+            Advance(actions[turn]);
         }
     }
 
@@ -87,6 +91,25 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
 
         // 현재 Turn & Point Text에 표시
         UIManager.Instance().TextUpdate(turn, gameScore);
+    }
+
+    // 현재 상황에서 플레이어가 가능한 행동을 모두 획득
+    public List<int> LegalActions()
+    {
+        List<int> actions = new List<int>();
+
+        for(int action = 0; action < 4; action++)
+        {
+            int ty = character.y + dy[action];
+            int tx = character.x + dx[action];
+
+            if(ty >= 0 && ty < H && tx >= 0 && tx < W)
+            {
+                actions.Add(action);
+            }
+        }
+
+        return actions;
     }
 
     #region Random_AI
@@ -112,26 +135,35 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
 
     #region BeamSearch
     // 빔 너비와 깊이를 지정해서 빔탐색으로 행동을 결정
-    public int BeamSearch_AI()
+    public int[] BeamSearch_AI(int beamWidth, int beamDepth)
     {
-        Queue currentBeam = new Queue();
-        int beamWidth = 2;
-        int beamDepth = 4;
-
+        // 현재 게임판 저장 변수
+        List<int[]> currentBeam = new List<int[]>();
         int bestScore = 0;
         int bestAction = 0;
 
-        for(int i = 0; i < beamDepth; i++)
+        for(int t = 0; t < beamDepth; t++)
         {
-            Queue nextBeam = new Queue();
+            // beamWidth에서 파생되는 모든 게임판 저장
+            List<int[]> nextBeam = new List<int[]>();
 
-            for(int j = 0; j < beamWidth; j++)
+            for(int i = 0; i < beamWidth; i++)
             {
                 if(currentBeam.Count == 0)
                 {
                     break;
                 }
+                
+                
+                List<int> legalActions = LegalActions();
+                
+                for(int action = 0;  action < legalActions.Count; action++)
+                {
+
+                }
             }
+
+            currentBeam = nextBeam;
 
             if (IsDone())
             {
@@ -139,7 +171,8 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
             }
         }
 
-        return firstAction;
+        // 앞으로 해야 할 행동 결정해서 반환
+        return currentBeam[0];
     }
     #endregion
 
