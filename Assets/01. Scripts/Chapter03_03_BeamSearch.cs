@@ -23,7 +23,6 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     public int[] dy = new int[4] { 0, 0, 1, -1 };
 
     public int[] actions = new int[4];
-    public int firstAction = -1; // 탐색 트리의 루트 노드에서 첫 번째 선택한 행동 
 
     public const int H = 3;        // 미로의 높이 (y축)
     public const int W = 4;        // 미로의 너비 (x축)
@@ -107,6 +106,10 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
             {
                 actions.Add(action);
             }
+            else
+            {
+                actions.Add(-1);
+            }
         }
 
         return actions;
@@ -138,41 +141,44 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
     public int[] BeamSearch_AI(int beamWidth, int beamDepth)
     {
         // 현재 게임판 저장 변수
-        List<int[]> currentBeam = new List<int[]>();
-        int bestScore = 0;
-        int bestAction = 0;
+        List<List<int[]>> currentBeam = new List<List<int[]>>();
+        int[] bestAction = new int[4];
 
-        for(int t = 0; t < beamDepth; t++)
+        // 깊이
+        for(int depth = 0; depth < beamDepth; depth++)
         {
-            // beamWidth에서 파생되는 모든 게임판 저장
-            List<int[]> nextBeam = new List<int[]>();
+            // 현재 깊이에서 파생되는 모든 게임판 저장
+            List<int[]> depthBeam = new List<int[]>();
 
-            for(int i = 0; i < beamWidth; i++)
+            if (depth == 0)
             {
-                if(currentBeam.Count == 0)
-                {
-                    break;
-                }
-                
-                
                 List<int> legalActions = LegalActions();
-                
-                for(int action = 0;  action < legalActions.Count; action++)
-                {
+                int[] point = new int[4];
 
+                for (int action = 0; action < legalActions.Count; action++)
+                {
+                    if(legalActions[action] == -1)
+                    {
+                        point[action] = 0;
+                    }
+                    else
+                    {
+                        point[action] = points[character.y + dy[action], character.x + dx[action]];
+                    }
                 }
             }
 
-            currentBeam = nextBeam;
-
-            if (IsDone())
+            // 너비 게임판 중 점수가 가장 높은 width 수 만큼 저장
+            for (int width = 0; width < beamWidth; width++)
             {
-                break;
+
             }
+
+            currentBeam.Add(depthBeam);
         }
 
-        // 앞으로 해야 할 행동 결정해서 반환
-        return currentBeam[0];
+        Debug.Log("::: AI Trainning Finish :::");
+        return bestAction;
     }
     #endregion
 
