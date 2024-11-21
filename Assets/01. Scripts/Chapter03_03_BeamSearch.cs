@@ -153,28 +153,31 @@ public class Chapter03_03_BeamSearch : MonoBehaviour
             if (depth == 0)
             {
                 List<int> legalActions = LegalActions();
-                int[] point = new int[4];
+                int[] points = new int[4];
 
-                for (int action = 0; action < legalActions.Count; action++)
+                for (int action = 0; action < 4; action++)
                 {
                     if(legalActions[action] == -1)
                     {
-                        point[action] = 0;
+                        points[action] = 0;
                     }
                     else
                     {
-                        point[action] = points[character.y + dy[action], character.x + dx[action]];
+                        points[action] = this.points[character.y + dy[action], character.x + dx[action]];
                     }
+                }
+
+                depthBeam.Add(points);
+            }
+            else
+            {
+                // 너비 게임판 중 점수가 가장 높은 width 수 만큼 저장
+                for (int width = 0; width < beamWidth; width++)
+                {
+
                 }
             }
 
-            // 너비 게임판 중 점수가 가장 높은 width 수 만큼 저장
-            for (int width = 0; width < beamWidth; width++)
-            {
-
-            }
-
-            currentBeam.Add(depthBeam);
         }
 
         Debug.Log("::: AI Trainning Finish :::");
